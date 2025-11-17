@@ -33,10 +33,10 @@ function appendToDisplay(value) {
   console.log("display updated to: ", display.value);
 }
 
-function clearDisplaye() {
+function clearDisplay() {
   console.log("Clear button pressed.");
-
-  alert("Clear button was clicked");
+  display.value = "0";
+  justCalculated = false;
 }
 
 function deleteLast() {
@@ -50,14 +50,42 @@ function deleteLast() {
   } else {
     display.value = currentValue.slice(0, -1);
   }
-
-  alert("Backspace button was clicked");
 }
 
 function calculate() {
   console.log("Equals button pressed.");
 
-  alert("Equals button was clicked");
+  try {
+    let expression = display.value;
+
+    // Prevent calculation if display is empty or just 0
+    if (!expression || expression === "0") {
+      return;
+    }
+
+    // Check for division by zero
+    if (expression.includes("/0")) {
+      display.value = "Error";
+      justCalculated = true;
+      return;
+    }
+
+    // Use Function constructor as safer alternative to eval
+    const result = Function('"use strict"; return (' + expression + ')')();
+
+    // Check if result is valid
+    if (!isFinite(result)) {
+      display.value = "Error";
+    } else {
+      display.value = result;
+    }
+
+    justCalculated = true;
+  } catch (error) {
+    console.error("Calculation error:", error);
+    display.value = "Error";
+    justCalculated = true;
+  }
 }
 
 document.addEventListener("DOMContentLoaded", function () {

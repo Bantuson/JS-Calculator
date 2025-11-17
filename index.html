@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="calculator">
         <!--Numbers Display-->
         <div class="display">
-            <Input type="text" id="display" value="0" readonly></Input>
+            <input type="text" id="display" value="0" readonly>
         </div>
 
         <!--buttons grid-->
@@ -18,13 +21,14 @@
             <!--First Row-->
             <button class="btn clear" onclick="clearDisplay()">AC</button>
             <button class="btn operator" onclick="deleteLast()">DEL</button>
-            <button class="btn operator" onclick="appendToDisplay('/')">➗</button>
-            <button class="btn operator" onclick="appendToDisplay('*')">X</button>
+            <button class="btn operator" onclick="appendToDisplay('/')">÷</button>
+            <button class="btn operator" onclick="appendToDisplay('*')">×</button>
 
             <!--Second Row-->
-            <button class="btn number" onclick="appendToDisplay(7)">7</button>
-            <button class="btn number" onclick="appendToDisplay(8)">8</button>
-            <button class="btn number" onclick="appendToDisplay(9)">9</button>
+            <button class="btn number" onclick="appendToDisplay('7')">7</button>
+            <button class="btn number" onclick="appendToDisplay('8')">8</button>
+            <button class="btn number" onclick="appendToDisplay('9')">9</button>
+            <button class="btn operator" onclick="appendToDisplay('-')">−</button>
 
             <!--Third Row-->
             <button class="btn number" onclick="appendToDisplay('4')">4</button>
